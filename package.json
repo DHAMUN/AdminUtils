@@ -1,0 +1,14 @@
+{
+  "name": "admin-utils",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Omar Shaikh <oshaikh13@gmail.com> (http://www.awesomeomar.com)",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^4.4.14",
+    "q": "^1.4.1"
+  }
+}
