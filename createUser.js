@@ -3,13 +3,14 @@ var mongoose    = require('mongoose');
 mongoose.connect('mongodb://localhost'); // connect to mongo database
 
 
-var User        = require('./userModel.js');
+var User        = require('./models/userModel.js');
 var Q           = require('q');
 var readline    = require('readline');
 
 var printInfo = function() {
   console.log();
   console.log("This utility creates users in DHAMUN");
+  console.log("Enter -1 for a persons first name to halt the program");
   console.log();
 }
 
