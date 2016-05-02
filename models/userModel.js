@@ -4,8 +4,22 @@ var UserSchema = new mongoose.Schema({
 
   hashCode: {
     type: String,
-    required: true,
     unique: true
+  },
+
+  hashVerified: {
+    type: Boolean,
+    default: false
+  },
+
+  username: {
+    type: String,
+    unique: true,
+    sparse: true
+  },
+
+  password: {
+    type: String
   },
 
   firstName: {
@@ -34,6 +48,7 @@ var UserSchema = new mongoose.Schema({
   }
 
 });
+
 
 UserSchema.methods.compareCodes = function (candidateCode) {
   var savedPassword = this.hashCode;
