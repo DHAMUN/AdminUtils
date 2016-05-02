@@ -1,6 +1,6 @@
 var mongoose    = require('mongoose');
-
-mongoose.connect('mongodb://localhost'); // connect to mongo database
+require('dotenv').config();
+mongoose.connect(process.env.MONGODB_URI); // connect to mongo database
 
 
 var User        = require('./models/userModel.js');
@@ -39,7 +39,9 @@ var genId = function(cb) {
   findOne({hashCode: randomHash})
     .then(function(user) {
       if (user) {
-        genId(cb);
+        console.log("UNLUCKY: REDO THIS PERSON")
+        console.log(JSON.stringify(user));
+        cb(randomHash, true);
       } else {
         cb(randomHash);
       }
@@ -53,7 +55,12 @@ var signup = function (data, cb) {
       committee = data.committee,
       school = data.school;
 
-  genId(function(newId){
+  genId(function(newId, err){
+
+    if (err) {
+      cb(false);
+      return;
+    }
 
     create = Q.nbind(User.create, User);
     newUser = {
