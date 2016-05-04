@@ -20,7 +20,7 @@ var sendVerficationMessages = function() {
         subject: 'Account Creation'
       };
 
-      var text = "Hello\n\n";
+      var text = "Hello + " + user.firstName + "\n\n";
       text += "We've noticed that you've signed up for an MUN account. Here is your validation link\n";
       text += "http://dhamun.com/#/home/signup/" + user.hashCode + "/\n\n";
       text += "This link will take you to a signup page, where you will create a DHAMUN password\n";
