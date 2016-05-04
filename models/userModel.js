@@ -12,10 +12,9 @@ var UserSchema = new mongoose.Schema({
     default: false
   },
 
-  username: {
+  email: {
     type: String,
-    unique: true,
-    sparse: true
+    unique: true
   },
 
   password: {
@@ -36,6 +35,11 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+
+  country: {
+    type: String,
+    required: true
+  },
   
   userLevel: {
     type: String,
@@ -48,11 +52,5 @@ var UserSchema = new mongoose.Schema({
   }
 
 });
-
-
-UserSchema.methods.compareCodes = function (candidateCode) {
-  var savedPassword = this.hashCode;
-  return this.hashCode === candidateCode;
-};
 
 module.exports = mongoose.model('users', UserSchema);
