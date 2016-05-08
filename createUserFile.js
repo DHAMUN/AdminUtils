@@ -113,9 +113,9 @@ var userSectionIterator = function(userSections) {
     } else if (index === 4) {
       model.userLevel = USER_LEVEL_MAP[parseInt(element.trim())];
     } else if (index === 5) {
-      model.country = iso3311a2.getCountry(element.trim());
-    } else if (index === 6) {
       model.email = element.trim();
+    } else if (index === 6) {
+      model.country = iso3311a2.getCountry(element.trim());
     }
 
   });
