@@ -38,16 +38,16 @@ var result = [
     school: 'Dhahran High School',
     email: 'shaik.o.418@isg.edu.sa' 
   }
-  // ,
+  ,
 
-  // { 
-  //   firstName: 'Shan',
-  //   lastName: 'Rizvi',
-  //   userLevel: 'Delegate',
-  //   committee: 'Security Council',
-  //   school: 'Dhahran High School',
-  //   email: 'rizvi.s.418@isg.edu.sa' 
-  // }
+  { 
+    firstName: 'Shan',
+    lastName: 'Rizvi',
+    userLevel: 'Delegate',
+    committee: 'Security Council',
+    school: 'Dhahran High School',
+    email: 'rizvi.s.418@isg.edu.sa' 
+  }
 
 ]
 
