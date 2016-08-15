@@ -8,7 +8,7 @@ var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 var mongoose = require('mongoose');
 var Users = require('./models/userModel.js');
 
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI2);
 
 var sendVerficationMessages = function() {
 

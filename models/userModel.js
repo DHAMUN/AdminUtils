@@ -51,6 +51,6 @@ var UserSchema = new mongoose.Schema({
     required: false
   }
 
-});
+}, { minimize: false });
 
 module.exports = mongoose.model('users', UserSchema);
