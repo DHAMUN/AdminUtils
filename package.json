@@ -8,6 +8,7 @@
   "author": "Omar Shaikh <oshaikh13@gmail.com> (http://www.awesomeomar.com)",
   "license": "ISC",
   "dependencies": {
+    "csv-parse": "^2.0.0",
     "dotenv": "^2.0.0",
     "iso-3166-1-alpha-2": "^1.0.0",
     "jwt-simple": "^0.5.0",

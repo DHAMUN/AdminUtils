@@ -1,7 +1,8 @@
 require('dotenv').config();
 var jwt = require('jwt-simple');
-
+var parse = require('csv-parse');
 var request = require('request');
+var fs = require("fs");
 
 // Encode a user dummy with the token secret
 var user = {
@@ -9,6 +10,7 @@ var user = {
 }
 
 var token = jwt.encode(user, process.env.TOKEN_SECRET);
+console.log(jwt.decode(token, process.env.TOKEN_SECRET));
 
 function dispatchRequest (user) {
   var options = { method: 'POST',
@@ -21,6 +23,7 @@ function dispatchRequest (user) {
 
   request(options, function (error, response, body) {
     if (error) console.log(user);
+    else console.log("Created Account");
   });
 
 }
@@ -28,31 +31,26 @@ function dispatchRequest (user) {
 // TODO: CSV parser here to read whatever format provided.
 //       instead of supplying a static object
 
+fs.readFile('users.csv', 'utf8', (err, data) => {
+  parse(data, function(err, rows) {
+    var userTable = [];
+    var keys = rows[0];
+    for (var i = 1; i < rows.length; i++) {
+      var userResult = {};
+      rows[i].forEach((value, index) => {
+        userResult[keys[index]] = value;
+      });
+      userTable.push(userResult);
+    }
+    console.log(userTable);
+    userTable.forEach(function(user){
+      dispatchRequest(user);
+    });
+  })
+})
 
-var result = [
-  { 
-    firstName: 'Omar',
-    lastName: 'Shaikh',
-    userLevel: 'Delegate',
-    committee: 'General Assembly',
-    school: 'Dhahran High School',
-    email: 'shaik.o.418@isg.edu.sa' 
-  }
-  ,
 
-  { 
-    firstName: 'Shan',
-    lastName: 'Rizvi',
-    userLevel: 'Delegate',
-    committee: 'Security Council',
-    school: 'Dhahran High School',
-    email: 'rizvi.s.418@isg.edu.sa' 
-  }
 
-]
 
-result.forEach(function(user){
-  dispatchRequest(user);
-});
 
 
